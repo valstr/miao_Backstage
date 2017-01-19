@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.user;
+import model.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +32,7 @@ public class userController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/save")
-	public Map<String, Object> save(user user){
+	public Map<String, Object> save(User user){
 		service.save(user);
 		return commonResponse.getResonse1();
 	}
@@ -43,7 +43,7 @@ public class userController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/modify")
-	public Map<String, Object> modify(user user){
+	public Map<String, Object> modify(User user){
 		service.modify(user);//
 		//
 		//mo.addAttribute(user);
@@ -159,7 +159,7 @@ public class userController {
 	@RequestMapping(value="/getinfo")
 	public Map<String, Object> getUserInfo(String code){
 		String openid=code;
-		user obj = service.getObjectByOpenId(openid);
+		User obj = service.getObjectByOpenId(openid);
 		Map<String, Object> map = commonResponse.getResonse1();
 		map.put("info", obj);
 		return map;

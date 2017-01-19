@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
-public class user implements Serializable {
+public class User implements Serializable {
 	
 	/**
 	 * 

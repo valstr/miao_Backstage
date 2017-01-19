@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="Meow Maven Webapp"
-  id="myeclipse.1484713707895"
-  context-root="/Meow"
+  name="web3 Maven Webapp"
+  id="myeclipse.1483510342802"
+  context-root="/web3"
   j2ee-spec="6.0"
-  archive="Meow Maven Webapp.war">
+  archive="web3 Maven Webapp.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />
   </attributes>

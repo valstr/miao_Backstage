@@ -2,8 +2,6 @@ package common;
 
 import java.util.List;
 
-import model.model;
-
 public class responseRows {
 
 	private int code = 1;
