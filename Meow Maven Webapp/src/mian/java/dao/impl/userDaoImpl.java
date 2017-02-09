@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import model.User;
+import model.user;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,6 +18,7 @@ import dao.IuserDao;
 public class userDaoImpl implements IuserDao {
 	
 	private static final String entity = "user";
+	
 	@Resource
 	private SessionFactory sessionFactory;
 	
@@ -60,40 +61,13 @@ public class userDaoImpl implements IuserDao {
 		return (Long)value;
 	}
 
-	public User getObjectByOpenId(String openid) {
-		return (User) getSession().createQuery("from "+entity+" where openid='"+openid+"'").uniqueResult();
+	public user getObjectByOpenId(String openid) {
+		return (user) getSession().createQuery("from "+entity+" where openid='"+openid+"'").uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<User> list(int enterpriseid) {
+	public List<user> list(int enterpriseid) {
 		return getSession().createQuery("from "+entity+" where enterpriseid="+enterpriseid).list();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> listMgr(int enterpriseid) {
-		return getSession().createQuery("from "+entity+" where enterpriseid="+enterpriseid+" and isgl=1").list();
-	}
-
-	@Override
-	public void addMgr(int id) {
-		getSession().createQuery("update "+entity+" set isgl=1 where openid='"+id+"'").executeUpdate();
-	}
-
-	@Override
-	public void removeMgr(int id) {
-		getSession().createQuery("update "+entity+" set isgl=0 where openid='"+id+"'").executeUpdate();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> listYuangong(int enterpriseid) {
-		return getSession().createQuery("from "+entity+" where enterpriseid="+enterpriseid+" and isgl=0").list();
-	}
-
-	@Override
-	public void removeYuangong(int id) {
-		getSession().createQuery("delete from "+entity+" where openid='"+id+"'").executeUpdate();
 	}
 
 }

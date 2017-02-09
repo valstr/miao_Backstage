@@ -4,6 +4,7 @@ public class responseBase {
 
 	private int code=1;
 	private String msg="ok";
+	
 	public int getCode() {
 		return code;
 	}

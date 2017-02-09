@@ -12,19 +12,16 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
-public class User implements Serializable {
+public class user implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2991804980243331113L;
 	private String id;
-	private String openid;
-	private String nickname;
-	private String avatar;
-	private String sex;
-	private int age;
-	private String tel;
+	private String title;//用户类型,0个人；1公司；
+	private String tribeids; //已加群号集合
+	
 	
 	@Id
 	@GeneratedValue(generator = "uuid")
@@ -35,43 +32,18 @@ public class User implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getOpenid() {
-		return openid;
+	public String getTitle() {
+		return title;
 	}
-	public void setOpenid(String openid) {
-		this.openid = openid;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getTribeids() {
+		return tribeids;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setTribeids(String tribeids) {
+		this.tribeids = tribeids;
 	}
-	public String getAvatar() {
-		return avatar;
-	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	
 
 	
 	
