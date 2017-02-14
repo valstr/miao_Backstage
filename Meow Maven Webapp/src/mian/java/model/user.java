@@ -19,8 +19,10 @@ public class user implements Serializable {
 	 */
 	private static final long serialVersionUID = -2991804980243331113L;
 	private String id;
+	private String openid;
 	private String title;//用户类型,0个人；1公司；
 	private String tribeids; //已加群号集合
+	private String collection;//收藏的兼职ID集合
 	
 	
 	@Id
@@ -43,6 +45,18 @@ public class user implements Serializable {
 	}
 	public void setTribeids(String tribeids) {
 		this.tribeids = tribeids;
+	}
+	public String getOpenid() {
+		return openid;
+	}
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+	public String getCollection() {
+		return collection;
+	}
+	public void setCollection(String collection) {
+		this.collection = collection;
 	}
 
 	
