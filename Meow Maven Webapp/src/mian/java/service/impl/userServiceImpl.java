@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 
+import model.user;
+
 import org.springframework.stereotype.Service;
 
 import dao.impl.userDaoImpl;
@@ -44,6 +46,11 @@ public class userServiceImpl implements IuserService {
 	@Override
 	public long count() {
 		return dao.count();
+	}
+
+	@Override
+	public user getObjectByOpenId(String openid) {
+		return dao.getObjectByOpenId(openid);
 	}
 	
 

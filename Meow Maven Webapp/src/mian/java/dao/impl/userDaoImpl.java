@@ -42,10 +42,12 @@ public class userDaoImpl implements IuserDao {
 		getSession().merge(obj);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Serializable> list() {
 		return getSession().createQuery("from "+entity).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Serializable> list(int page, int size) {
 		Session session = this.getSession();
 		Query query = session.createQuery("from "+entity);
