@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 
@@ -79,40 +80,41 @@ public class userController {
 	@RequestMapping(value = "/login")
 	public Map<String, Object> login(String code) throws ParseException,
 			IOException {
-		// System.out.println("================" + code + "-------------" +
-		// appid
-		// + "--------------" + AppSecret);
-		// JSONObject json = httpUtil
-		// .doGetStr("https://api.weixin.qq.com/sns/jscode2session?appid="
-		// + appid + "&secret=" + AppSecret + "&js_code=" + code
-		// + "&grant_type=authorization_code");
-		// String openid = json.getString("openid");
-
-		// 临时随机一个openid
-		Random random = new Random();
-		String openid = random.nextInt(1000) + 1 + "";
-		int i=1;
-		while (i == 0) {
-			for(String val:values){
-				i=0;
-				if (val==openid) {
-					i=1;
-				}
-			}
-		};
+//		 System.out.println("================" + code + "-------------" +
+//		 appid
+//		 + "--------------" + AppSecret);
+//		 JSONObject json = httpUtil
+//		 .doGetStr("https://api.weixin.qq.com/sns/jscode2session?appid="
+//		 + appid + "&secret=" + AppSecret + "&js_code=" + code
+//		 + "&grant_type=authorization_code");
+//		 String openid = json.getString("openid");
 
 //		if (openid != null) {// 登入成功
-			user u = service.getObjectByOpenId(openid);
-			Map<String, Object> map = commonResponse.getResonse1();
-			if (u == null) {// 第一次登入 添加到系统
-				map.put("openid", openid);
-			} else { // 第二次登录
-				map.put("cont", u);
-			}
-			return map;
+//			user u = service.getObjectByOpenId(openid);
+//			Map<String, Object> map = commonResponse.getResonse1();
+//			if (u == null) {// 第一次登入 添加到系统
+//				map.put("openid", openid);
+//			} else { // 第二次登录
+//				map.put("cont", u);
+//			}
+//			return map;
 //		} else {
 //			return commonResponse.getResonse500();
 //		}
 
+		//测试用以CODE来代替openid
+		System.out.println(new Date()+"微信code为"+code);
+		if(code!=null){
+			user u = service.getObjectByOpenId(code);
+			Map<String, Object> map = commonResponse.getResonse1();
+			if (u == null) {// 第一次登入 添加到系统
+				map.put("openid", code);
+			} else { // 第二次登录
+				map.put("cont", u);
+			}
+			return map;
+		} else {
+			return commonResponse.getResonse500();
+		}
 	}
 }
